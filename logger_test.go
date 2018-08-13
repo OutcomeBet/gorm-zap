@@ -66,7 +66,7 @@ func Test_Logger_Postgres(t *testing.T) {
 		},
 		{
 			run:    func() error { return db.Model(&Post{}).Find(&[]*Post{}).Error },
-			sql:    "SELECT * FROM \"posts\"  ",
+			sql:    fmt.Sprintf("SELECT * FROM %q  ", "posts"),
 			values: []string{},
 		},
 		{
@@ -74,8 +74,8 @@ func Test_Logger_Postgres(t *testing.T) {
 				return db.Where(&Post{Title: "awesome", Body: "This is awesome post !"}).First(&Post{}).Error
 			},
 			sql: fmt.Sprintf(
-				"SELECT * FROM %q  WHERE (%q = $1) AND (%q = $2) LIMIT 1",
-				"posts", "title", "body",
+				`SELECT * FROM %q  WHERE (%q.%q = $1) AND (%q.%q = $2) LIMIT 1`,
+				"posts", "posts", "title", "posts", "body",
 			),
 			values: []string{"awesome", "This is awesome post !"},
 		},

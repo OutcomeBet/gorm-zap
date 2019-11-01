@@ -19,3 +19,5 @@
 ### misc ###
 vendor/
 coverage.txt
+
+/.idea

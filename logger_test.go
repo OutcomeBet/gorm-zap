@@ -9,10 +9,9 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
+	"github.com/wantedly/gorm-zap/testhelper"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zaptest/observer"
-
-	"github.com/wantedly/gorm-zap/testhelper"
 )
 
 var pool *testhelper.DockerPool

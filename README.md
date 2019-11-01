@@ -16,7 +16,8 @@ package main
 
 import (
 	"github.com/jinzhu/gorm"
-	"github.com/wantedly/gorm-zap"
+	"github.com/outcomebet/gorm-zap"
+	"go.uber.org/zap"
 )
 
 const (
@@ -24,7 +25,7 @@ const (
 )
 
 func main() {
-	logger, err = zap.NewProduction()
+	logger, err := zap.NewProduction()
 	if err != nil {
 		panic(err)
 	}

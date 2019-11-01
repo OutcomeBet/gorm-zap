@@ -58,7 +58,7 @@ func Test_Logger_Postgres(t *testing.T) {
 		{
 			run: func() error { return db.Create(&Post{Title: "awesome"}).Error },
 			sql: fmt.Sprintf(
-				"INSERT INTO %q (%q,%q,%q) VALUES ($1,$2,$3) RETURNING %q.*",
+				"INSERT  INTO %q (%q,%q,%q) VALUES ($1,$2,$3) RETURNING %q.*",
 				"posts", "title", "body", "created_at",
 				"posts",
 			),
